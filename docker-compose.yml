@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  redis:
+    container_name: redis
+    platform: linux/arm64
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - quart-redis
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  backend:
+    container_name: backend
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app
+    env_file: ./.env
+    environment:
+      - MODE=${MODE:-dev}
+    x-develop:
+      watch:
+        - action: rebuild
+          path: .
+    ports:
+      - 80:80
+    command: >
+      sh -c "
+      echo MODE is $$MODE;
+      if [ $$MODE = prod ]; then
+        pipenv run hypercorn main:app -b 0.0.0.0:80 --workers 4;
+      else
+        pipenv run hypercorn main:app -b 0.0.0.0:80 --reload;
+      fi
+      "
+    networks:
+      - quart-redis
+    depends_on:
+      - redis
+
+volumes:
+  redis_data:
+
+networks:
+  quart-redis:
