@@ -98,3 +98,15 @@ class User(AuthUser):
     async def user_info(self) -> Dict[str, Any]:
         await self._resolve()
         return {"username": self.username}
+
+    def __repr__(self) -> str:
+        return f"<User {self.username}>"
+
+    def __str__(self) -> str:
+        return self.username
+
+    def __hash__(self) -> int:
+        return hash(self.username)
+
+    def __eq__(self, other: Any) -> bool:
+        return self.username == other.username

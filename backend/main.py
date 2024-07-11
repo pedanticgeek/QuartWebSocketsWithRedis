@@ -1,8 +1,13 @@
-from quart import current_app
+from quart import current_app, request
 from app import create_app
 
 
 app = create_app()
+
+
+@app.before_request
+async def before_request():
+    current_app.logger.info(f"Request received: {request.method} {request.path}")
 
 
 @app.before_serving

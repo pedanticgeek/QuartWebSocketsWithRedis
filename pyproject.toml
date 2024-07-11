@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "QuartWebSocketsWithRedis"
+version = "0.0.1"
+description = "This repository contains my example code for a basic setup of Quart API with Quart-Auth, Quart-Redis and Quart-Schema. It includes REST and WebSocket endpoints, where websocket session queues are managed by Redis."
+authors = ["Maxim Ellison <maxdsid@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "backend" },
+]
+
+[build-system]
+requires      = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.dependencies]
+python       = "^3.11"
+Quart        = "^0.19.6"
+quart-cors   = "^0.7.0"
+quart-auth   = "^0.10.1"
+quart-redis  = "^2.0.0"
+quart-schema = "^0.20.0"
+pydantic     = "^2.8.2"
+argon2-cffi  = "^23.1.0"
+Hypercorn    = "^0.17.3"
+pre-commit   = "^3.7.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest         = "^8.2.2"
+pytest-asyncio = "^0.23.7"
+pytest-mock    = "^3.14.0"
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-ra -q"
+pythonpath = [
+    'backend',
+]
+[tool.poe.tasks.dev]
+cmd  = "poetry run docker compose up"
+help = "Runs the server in the DEV mode"

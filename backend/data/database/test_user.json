@@ -1,1 +1,1 @@
-{"username": "test_user", "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$PSVa9e2F/bqPGN3RV+zOdQ$F9crMsnE7q7+F0LY3R5hlyWO+bHaGDQLB5scYhcDsqc", "auth_token": "InRlc3RfdXNlciI.ZovgPg.NveWJhgpQGThGeigFzTr-81x6VjhseaKdYvRv9gRyQxEtiJS_dD7Xc2uv4nxYHg9lqEhkSIVAExyjs45N6I2eQ"}
+{"username": "test_user", "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$PSVa9e2F/bqPGN3RV+zOdQ$F9crMsnE7q7+F0LY3R5hlyWO+bHaGDQLB5scYhcDsqc", "auth_token": "InRlc3RfdXNlciI.Zo80sw.XnO9y17xderDvMnsWfG0xdh8SU7SMeStH28Oc6vDdkCWAn7FjWp2CQwZfFOmOYZOHgLDBmsXCneVXxGOVexaEQ"}

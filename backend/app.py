@@ -4,6 +4,7 @@ from quart import Quart, jsonify
 from quart_schema import QuartSchema, Info
 from quart_auth import QuartAuth
 from quart_redis import RedisHandler
+from quart_cors import cors
 from api import auth_bp, websockets_bp, health_bp, error_handlers
 from data.models import User
 from utils.logger import Logger
@@ -59,6 +60,11 @@ def create_app():
 
     app.register_error_handler(
         error_handlers.APIException, error_handlers.handle_api_exception
+    )
+    cors(
+        app,
+        allow_origin="*",
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
     )
 
     return app

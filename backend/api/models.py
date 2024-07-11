@@ -1,5 +1,5 @@
 from typing import Dict, Any, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Extra
 
 
 class LoginRequest(BaseModel):
@@ -20,6 +20,10 @@ class RegisterResponse(BaseModel):
     username: str
 
 
+class WebsocketPaylod(BaseModel, extra="allow"):
+    message: str
+
+
 class WebsocketMessage(BaseModel):
-    payload: Dict[str, Any]
+    payload: WebsocketPaylod
     metadata: Optional[Dict[str, Any] | None]
