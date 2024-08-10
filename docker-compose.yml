@@ -34,9 +34,9 @@ services:
       sh -c "
       echo MODE is $$MODE;
       if [ $$MODE = prod ]; then
-        pipenv run hypercorn main:app -b 0.0.0.0:80 --workers 4;
+        poetry run hypercorn main:app -b 0.0.0.0:80 --workers 4;
       else
-        pipenv run hypercorn main:app -b 0.0.0.0:80 --reload;
+        poetry run hypercorn main:app -b 0.0.0.0:80 --reload;
       fi
       "
     networks:

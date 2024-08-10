@@ -1,10 +1,12 @@
 {
 	"folders": [
 		{
+			"name": "QuartWebSocketsWithRedis",
 			"path": "."
 		},
 		{
-			"path": "./backend/"
+			"name": "backend",
+			"path": "backend"
 		}
 	],
 	"settings": {}

@@ -4,13 +4,12 @@ FROM python:3.11-slim-bookworm as base
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYHTONUNBUFFERED=1
 
-RUN python -m pip install pipenv
+RUN python -m pip install poetry
 
 EXPOSE 80
 
-COPY ./Pipfile /app/
-COPY ./Pipfile.lock /app/
 WORKDIR /app
-RUN pipenv install
 
 COPY ./backend /app/
+
+RUN poetry install
